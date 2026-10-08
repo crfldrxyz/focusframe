@@ -1,0 +1,7 @@
+export const STATES=Object.freeze({IDLE:"idle",ACTIVE:"active",PAUSED:"paused",COMPLETED:"completed"});
+export function createSession({task,durationMinutes,now=Date.now(),id=globalThis.crypto?.randomUUID?.()||String(now)}){if(!task?.trim())throw new Error("Task is required");const duration=Math.round(Number(durationMinutes)*60000);if(!Number.isFinite(duration)||duration<60000||duration>10800000)throw new Error("Duration must be 1–180 minutes");return{id,task:task.trim(),duration,startedAt:now,endAt:now+duration,state:STATES.ACTIVE,pausedAt:null,accumulatedPauseDuration:0,completedAt:null,reflection:""}}
+export function remainingMs(s,now=Date.now()){if(s.state===STATES.PAUSED)return Math.max(0,s.endAt-(s.pausedAt||now));if(s.state===STATES.COMPLETED)return 0;return Math.max(0,s.endAt-now)}
+export function pauseSession(s,now=Date.now()){return s.state===STATES.ACTIVE?{...s,state:STATES.PAUSED,pausedAt:now}:s}
+export function resumeSession(s,now=Date.now()){if(s.state!==STATES.PAUSED)return s;const d=Math.max(0,now-s.pausedAt);return{...s,state:STATES.ACTIVE,endAt:s.endAt+d,accumulatedPauseDuration:s.accumulatedPauseDuration+d,pausedAt:null}}
+export function completeSession(s,now=Date.now()){return{...s,state:STATES.COMPLETED,completedAt:now,pausedAt:null}}
+export function reconcileSession(s,now=Date.now()){return s.state===STATES.ACTIVE&&now>=s.endAt?completeSession(s,now):s}

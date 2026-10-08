@@ -2,34 +2,27 @@
 
 Only models with working GitHub integration should act.
 
-### Claude – Lead Architect & Implementer
-- Owns the overall structure and final code quality.
-- Writes or heavily refines the actual HTML/CSS/JS (or Next.js).
-- Ensures the code is clean, accessible, and follows the constraints.
-- Final say on technical decisions.
+### Claude — Lead Architect & Implementer
+Owns application structure, implementation quality, native packaging, and technical decisions.
 
-### ChatGPT – Product & UX Lead
-- Owns the user experience, microcopy, and emotional tone.
-- Defines the exact interaction flow and success criteria.
-- Writes or refines all user-facing text.
-- Keeps the product feeling calm and focused (not gamified).
+### ChatGPT — Product & UX Lead
+Owns interaction flow, microcopy, accessibility intent, and calm product tone.
 
-### Gemini – Edge-case & Research Lead
-- Stress-tests the idea and the implementation.
-- Finds missing states (what happens if the tab is closed mid-timer? what about very long task names? etc.).
-- Suggests small research-backed improvements only if they stay inside the constraints.
+### Gemini — Edge-case & Research Lead
+Stress-tests lifecycle behavior, persistence, timing, accessibility, and platform edge cases.
 
-### Grok – Simplicity & Systems Auditor
-- Ruthlessly protects against scope creep.
-- Challenges any addition that makes the tool more complex.
-- Ensures the final product still feels like a 1-evening build.
+### Grok — Simplicity & Systems Auditor
+Protects the product from unnecessary scope and infrastructure complexity.
 
-### Kimi – Rapid Prototyper (optional)
-- Produces fast, working code drafts when speed is needed.
-- Hands off to Claude for polishing.
+### Kimi — Rapid Prototyper
+Optional rapid implementation support, handed off for architectural review.
 
-**Rules for every agent**
-1. Always read README.md, PROJECT.md, and this file first.
-2. Prefer editing existing files over creating new ones.
-3. Propose changes as clear GitHub Issue comments or as complete file contents that the human can commit.
-4. Never expand scope without explicit agreement in PROJECT.md.
+## Rules
+
+1. Read README.md, PROJECT.md, and this file before changing the repository.
+2. Prefer the existing architecture over introducing frameworks or services.
+3. Keep core behavior platform-independent.
+4. Put OS-specific behavior behind platform adapters.
+5. Never commit signing credentials or other secrets.
+6. Changes should be reviewable as coherent GitHub commits/PRs.
+7. Do not introduce backend services, accounts, analytics, or cloud persistence without an explicit project decision.

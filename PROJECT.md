@@ -1,28 +1,40 @@
 # FocusFrame – Living Project Plan
 
 ## Vision
+
 A calm, single-purpose tool that helps someone start and finish one focused work session.
 
-## Success Criteria (must all be true)
-- User can complete a full focus session in under 30 seconds of setup.
-- The interface feels peaceful, not busy.
-- Session can be exported as clean Markdown.
+## Architecture baseline
+
+One product core with Browser, Capacitor, and Tauri adapters. Core behavior is shared; operating-system behavior is isolated.
+
+## Success criteria
+
+- Start a session in under 30 seconds.
+- Interface feels peaceful, not busy.
+- Timer remains correct after backgrounding, sleep, reload, and resume.
+- Session data persists locally.
+- Session exports as clean Markdown.
 - Works offline after first load.
 - Looks good on phone and desktop.
-- Total complexity stays low enough for a non-technical person to maintain.
+- Complexity remains low enough for a non-technical maintainer.
 
-## Current Phase
-Phase 0 – Foundation (we are here)
+## Current phase
 
-## Open Questions
-- Exact timer behaviour when the browser tab is inactive?
-- Should the reflection be mandatory or optional?
-- Dark mode from day one or later?
+Phase 1 — Core foundation implemented.
 
-## Next Actions
-1. Agree on the exact user flow (Product & UX Lead).
-2. Lock the visual style direction (calm, minimal, one accent colour).
-3. Produce first working HTML prototype.
+## Decisions
 
-## Decision Log
-- 2026-08-23: Project created. Scope locked to pure frontend + localStorage only.
+- 2026-08-23: Project created as pure frontend.
+- 2026-10-08: IndexedDB is the session persistence layer; localStorage is limited to preferences.
+- 2026-10-08: Timestamp-based session engine is authoritative; workers are not a reliability guarantee.
+- 2026-10-08: Platform-specific behavior must pass through adapters.
+- 2026-10-08: Release lifecycle is commit → validate → build → sign → verify → stage → approve → distribute → rollback.
+
+## Next actions
+
+1. Validate core flow on real browsers/devices.
+2. Add Capacitor projects and adapters.
+3. Add Tauri projects and adapters.
+4. Expand CI into platform build/signing pipelines after credentials are configured.
+5. Establish release-candidate and rollback procedures.
