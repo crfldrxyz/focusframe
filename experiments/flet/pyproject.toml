@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Isolated Flet proof of concept for FocusFrame"
 requires-python = ">=3.10"
 dependencies = [
-  "flet>=0.80.0",
+  "flet>=1.0.0",
 ]
 
 [project.optional-dependencies]
@@ -16,6 +16,9 @@ dev = [
   "pytest>=8.0",
 ]
 
+[tool.setuptools]
+py-modules = ["main", "session_engine", "markdown_export"]
+
 [tool.pytest.ini_options]
-testpaths = ["experiments/flet/tests"]
-pythonpath = ["experiments/flet"]
+testpaths = ["tests"]
+pythonpath = ["."]
