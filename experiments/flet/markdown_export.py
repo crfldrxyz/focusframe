@@ -1,6 +1,6 @@
 """Markdown export for the FocusFrame Flet experiment."""
 
-from .session_engine import Session
+from session_engine import Session
 
 
 def export_markdown(session: Session) -> str:
