@@ -14,4 +14,4 @@ def test_export_includes_task_status_and_reflection():
 
 def test_export_escapes_markdown_brackets_in_task():
     session = create_session("y", "[Draft] a title", 300)
-    assert r"\\[Draft\\] a title" in export_markdown(session)
+    assert r"\[Draft\] a title" in export_markdown(session)
