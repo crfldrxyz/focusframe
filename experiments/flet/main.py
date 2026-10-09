@@ -163,7 +163,7 @@ async def main(page: ft.Page):
         if not session:
             return
         session.status = "completed"
-        session.end_at = min(session.end_at or time.time(), time.time())
+        session.end_at = time.time()
         session.paused_at = None
         session.reflection = reflection.value or ""
         await persist()
