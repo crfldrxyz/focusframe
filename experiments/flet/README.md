@@ -14,17 +14,17 @@ python -m venv .venv
 # source .venv/bin/activate
 
 python -m pip install -e ".[dev]"
-flet run experiments/flet/main.py
+flet run main.py
 ```
 
-To try it in a browser, run `flet run --web experiments/flet/main.py`.
+To try it in a browser, run `flet run --web main.py`.
 
 ## Scope
 
 - Start, pause, resume, and complete a focus session.
 - Timestamp-authoritative timing; the displayed countdown is only a view of that state.
 - Persist session state and preferences with Flet's `SharedPreferences` client-side service.
-- Capture a reflection and export a Markdown file.
+- Capture a reflection and prepare/copy a Markdown export.
 - Unit tests for session transitions and expiry reconciliation.
 
 ## Evaluation boundaries
