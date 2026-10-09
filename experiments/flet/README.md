@@ -7,6 +7,7 @@ This is an isolated proof of concept for evaluating Flet against the existing Ja
 Requires Python 3.10+.
 
 ```bash
+cd experiments/flet
 python -m venv .venv
 # Windows PowerShell:
 .venv\\Scripts\\Activate.ps1
